@@ -1,12 +1,12 @@
 <img src="https://i.imgur.com/t8IkKoZl.png" width="200"/>
 
-[![Maintained by Mineiros.io](https://img.shields.io/badge/maintained%20by-mineiros.io-00607c.svg)](https://www.mineiros.io/ref=terraform-module-template)
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-module-template/branches/master.svg?style=shields)](https://mineiros.semaphoreci.com/projects/terraform-module-template)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-module-template.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-module-template/releases)
+[![Maintained by Mineiros.io](https://img.shields.io/badge/maintained%20by-mineiros.io-00607c.svg)](https://www.mineiros.io/ref=terraform-aws-iam-user)
+[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields)](https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-iam-user/releases)
 [![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-brightgreen.svg)](https://github.com/hashicorp/terraform/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# terraform-module-template
+# terraform-aws-iam-user
 A [Terraform](https://www.terraform.io) 0.12 base module for
 [Amazon Web Services (AWS)](https://aws.amazon.com/).
 
@@ -59,9 +59,9 @@ module "resource" {
 
 ## Module Argument Reference
 See
-[variables.tf](https://github.com/mineiros-io/terraform-module-template/blob/master/variables.tf)
+[variables.tf](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/variables.tf)
 and
-[examples/](https://github.com/mineiros-io/terraform-module-template/blob/master/examples)
+[examples/](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples)
 for details and use-cases.
 
 #### Module Configuration
@@ -110,21 +110,21 @@ databases, logging and monitoring, CI, etc.
 - Consulting & Training on AWS, Terraform and DevOps.
 
 ## Reporting Issues
-We use GitHub [Issues](https://github.com/mineiros-io/terraform-module-template/issues)
+We use GitHub [Issues](https://github.com/mineiros-io/terraform-aws-iam-user/issues)
 to track community reported issues and missing features.
 
 ## Contributing
 Contributions are always encouraged and welcome! For the process of accepting changes, we use
-[Pull Requests](https://github.com/mineiros-io/terraform-module-template/pulls). If you’d like more information, please
-see our [Contribution Guidelines](https://github.com/mineiros-io/terraform-module-template/blob/master/CONTRIBUTING.md).
+[Pull Requests](https://github.com/mineiros-io/terraform-aws-iam-user/pulls). If you’d like more information, please
+see our [Contribution Guidelines](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/CONTRIBUTING.md).
 
 ## Makefile Targets
 This repository comes with a handy
-[Makefile](https://github.com/mineiros-io/terraform-module-template/blob/master/Makefile).  
+[Makefile](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/Makefile).  
 Run `make help` to see details on each available target.
 
 ## License
 This module is licensed under the Apache License Version 2.0, January 2004.
-Please see [LICENSE](https://github.com/mineiros-io/terraform-module-template/blob/master/LICENSE) for full details.
+Please see [LICENSE](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/LICENSE) for full details.
 
 Copyright &copy; 2020 Mineiros

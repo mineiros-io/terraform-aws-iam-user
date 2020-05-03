@@ -1,5 +1,5 @@
 version: v1.0
-name: "Terraform-Module-Template CI Pipeline"
+name: "terraform-aws-iam-user CI Pipeline"
 agent:
   machine:
     type: e1-standard-2
