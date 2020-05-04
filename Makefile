@@ -20,6 +20,31 @@ YELLOW := $(shell tput -Txterm setaf 3)
 WHITE  := $(shell tput -Txterm setaf 7)
 RESET  := $(shell tput -Txterm sgr0)
 
+.DEFAULT_GOAL := help
+
+.PHONY: test/pre-commit-hooks
+## Mounts the working directory inside a docker container and runs the pre-commit hooks
+test/pre-commit-hooks:
+	@echo "${GREEN}Start running the pre-commit hooks with docker${RESET}"
+	@docker run --rm \
+		-u ${USER_UID}:${USER_GID} \
+		-v ${PWD}:${MOUNT_TARGET_DIRECTORY} \
+		${BUILD_TOOLS_DOCKER_IMAGE} \
+		sh -c "pre-commit run -a"
+
+.PHONY: test/unit-tests
+## Mounts the working directory inside a new container and runs the Go tests. Requires $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY to be set
+# test/unit-tests:
+# 	@echo "${GREEN}Start running the unit tests with docker${RESET}"
+# 	@docker run --rm \
+# 		-e AWS_ACCESS_KEY_ID \
+# 		-e AWS_SECRET_ACCESS_KEY \
+# 		-u ${USER_UID}:${USER_GID} \
+# 		-v ${PWD}:${MOUNT_TARGET_DIRECTORY} \
+# 		${BUILD_TOOLS_DOCKER_IMAGE} \
+# 		go test -v -timeout 45m -parallel 128 test/example_test.go
+
+.PHONY: help
 ## Display help for all targets
 help:
 	@awk '/^[a-zA-Z_0-9%:\\\/-]+:/ { \
@@ -33,29 +58,3 @@ help:
 			} \
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST) | sort -u
-
-.DEFAULT_GOAL := help
-
-## Mounts the working directory inside a docker container and runs the pre-commit hooks
-docker/pre-commit-hooks:
-	@echo "${GREEN}Start running the pre-commit hooks with docker${RESET}"
-	@docker run --rm \
-		-u ${USER_UID}:${USER_GID} \
-		-e HOME=/tmp \
-		-v ${PWD}:${MOUNT_TARGET_DIRECTORY} \
-		${BUILD_TOOLS_DOCKER_IMAGE} \
-		sh -c "pre-commit run -a"
-
-## Mounts the working directory inside a new container and runs the Go tests. Requires $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY to be set
-# docker/unit-tests:
-# 	@echo "${GREEN}Start running the unit tests with docker${RESET}"
-# 	@docker run --rm \
-# 		-e AWS_ACCESS_KEY_ID \
-# 		-e AWS_SECRET_ACCESS_KEY \
-# 		-u ${USER_UID}:${USER_GID} \
-# 		-e HOME=/tmp \
-# 		-v ${PWD}:${MOUNT_TARGET_DIRECTORY} \
-# 		${BUILD_TOOLS_DOCKER_IMAGE} \
-# 		go test -v -timeout 45m -parallel 128 test/example_test.go
-
-.PHONY: help docker/pre-commit-hooks docker/unit-tests
