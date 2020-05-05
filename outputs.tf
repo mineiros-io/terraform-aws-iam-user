@@ -6,9 +6,59 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ------------------------------------------------------------------------------
 
+output "user" {
+  description = "The IAM User object."
+  value       = try(aws_iam_user.user[0], null)
+}
+
+output "user_policy" {
+  description = "The IAM Policy object of the Users inline policy."
+  value       = try(aws_iam_user_policy.policy[0], null)
+}
+
 # ------------------------------------------------------------------------------
 # OUTPUT ALL INPUT VARIABLES
 # ------------------------------------------------------------------------------
+
+output "name" {
+  description = "The user's name."
+  value       = var.name
+}
+
+output "path" {
+  description = "Path in which to create the user."
+  value       = var.path
+}
+
+output "permissions_boundary" {
+  description = "The ARN of the policy that is used to set the permissions boundary for the user."
+  value       = var.permissions_boundary
+}
+
+output "force_destroy" {
+  description = "When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices."
+  value       = var.force_destroy
+}
+
+output "tags" {
+  description = "Key-value map of tags for the IAM user."
+  value       = var.tags
+}
+
+output "policy_statements" {
+  description = "List of IAM policy statements to attach to the User as an inline policy."
+  value       = var.policy_statements
+}
+
+output "policy_arns" {
+  description = "List of IAM custom or managed policies ARNs attached to the User."
+  value       = var.policy_arns
+}
+
+output "groups" {
+  description = "List of IAM groups the User was added to."
+  value       = var.groups
+}
 
 # ------------------------------------------------------------------------------
 # OUTPUT MODULE CONFIGURATION
