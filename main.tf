@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # AWS IAM USER
 # This module creates a single AWS IAM USER
-# You can attach an inline policy and/or custom/managed policies via ther ARNs
+# You can attach an inline policy and/or custom/managed policies through their ARNs
 # You can add the user to a list of groups (use module_depends_on to depend on group resources)
 # ------------------------------------------------------------------------------
 resource "aws_iam_user" "user" {
