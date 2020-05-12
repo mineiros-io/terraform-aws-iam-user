@@ -17,9 +17,9 @@ blocks:
       jobs:
         - name: "Pre Commit Hooks"
           commands:
-            - make docker/pre-commit-hooks
+            - make test/pre-commit-hooks
 
 # There are no unit tests inside this repository since it acts as a code convention example only
 #        - name: "Unit Tests"
 #          commands:
-#            - make docker/unit-tests
+#            - make test/unit-tests
