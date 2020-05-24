@@ -7,22 +7,22 @@
 # ------------------------------------------------------------------------------
 
 output "user" {
-  description = "The IAM User object."
-  value       = try(aws_iam_user.user[0], null)
+  description = "The IAM User objects."
+  value       = try(aws_iam_user.user, null)
 }
 
 output "user_policy" {
-  description = "The IAM Policy object of the Users inline policy."
-  value       = try(aws_iam_user_policy.policy[0], null)
+  description = "The IAM Policy objects of the Users inline policy."
+  value       = try(aws_iam_user_policy.policy, null)
 }
 
 # ------------------------------------------------------------------------------
 # OUTPUT ALL INPUT VARIABLES
 # ------------------------------------------------------------------------------
 
-output "name" {
-  description = "The user's name."
-  value       = var.name
+output "names" {
+  description = "The user names."
+  value       = var.names
 }
 
 output "path" {
@@ -51,12 +51,12 @@ output "policy_statements" {
 }
 
 output "policy_arns" {
-  description = "List of IAM custom or managed policies ARNs attached to the User."
+  description = "Set of IAM custom or managed policies ARNs attached to the User."
   value       = var.policy_arns
 }
 
 output "groups" {
-  description = "List of IAM groups the User was added to."
+  description = "List of IAM groups the users were added to."
   value       = var.groups
 }
 
