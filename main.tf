@@ -5,7 +5,7 @@
 # You can add the user to a list of groups (use module_depends_on to depend on group resources)
 # ------------------------------------------------------------------------------
 resource "aws_iam_user" "user" {
-  for_each = var.module_enabled ? [var.name] : []
+  for_each = var.module_enabled ? toset([var.name]) : []
 
   name                 = each.key
   path                 = var.path
