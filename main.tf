@@ -93,9 +93,9 @@ resource "aws_iam_user_policy_attachment" "policy" {
   ]
 }
 
-# add the user to a list of groups
+# add the user to a list of groups if groups are defined
 resource "aws_iam_user_group_membership" "group" {
-  for_each = var.module_enabled ? var.names : []
+  for_each = var.module_enabled && length(var.groups) > 0 ? var.names : []
 
   user   = aws_iam_user.user[each.key].name
   groups = var.groups
