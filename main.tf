@@ -4,8 +4,9 @@
 # You can attach an inline policy and/or custom/managed policies through their ARNs
 # You can add the user to a list of groups (use module_depends_on to depend on group resources)
 # ------------------------------------------------------------------------------
+
 resource "aws_iam_user" "user" {
-  for_each = var.module_enabled ? [var.name] : []
+  for_each = var.module_enabled ? var.names : []
 
   name                 = each.key
   path                 = var.path
@@ -66,30 +67,37 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_user_policy" "policy" {
-  count = local.policy_enabled ? 1 : 0
+  for_each = local.policy_enabled ? aws_iam_user.user : {}
 
   policy = data.aws_iam_policy_document.policy[0].json
-  name   = var.name
-  user   = aws_iam_user.user[0].name
+  name   = each.value.name
+  user   = each.value.name
 
   depends_on = [var.module_depends_on]
+}
+
+locals {
+  policy_arns = tolist(setproduct(var.names, var.policy_arns))
 }
 
 # Attach custom or managed policies
 resource "aws_iam_user_policy_attachment" "policy" {
-  count = var.module_enabled ? length(var.policy_arns) : 0
+  count = var.module_enabled ? length(local.policy_arns) : 0
 
-  user       = aws_iam_user.user[0].name
-  policy_arn = var.policy_arns[count.index]
+  user       = local.policy_arns[count.index][0]
+  policy_arn = local.policy_arns[count.index][1]
 
-  depends_on = [var.module_depends_on]
+  depends_on = [
+    var.module_depends_on,
+    aws_iam_user.user,
+  ]
 }
 
 # add the user to a list of groups
 resource "aws_iam_user_group_membership" "group" {
-  count = var.module_enabled && length(var.groups) > 0 ? 1 : 0
+  for_each = var.module_enabled ? var.names : []
 
-  user   = aws_iam_user.user[0].name
+  user   = aws_iam_user.user[each.key].name
   groups = var.groups
 
   depends_on = [var.module_depends_on]

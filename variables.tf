@@ -11,9 +11,9 @@
 # These variables must be set when using this module.
 # ------------------------------------------------------------------------------
 
-variable "name" {
-  type        = string
-  description = "(Required) The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: '=,.@-_'. User names are not distinguished by case."
+variable "names" {
+  type        = set(string)
+  description = "(Required) A set of names. Every name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: '=,.@-_'. User names are not distinguished by case."
 }
 
 # ------------------------------------------------------------------------------
@@ -51,8 +51,8 @@ variable "policy_statements" {
 }
 
 variable "policy_arns" {
-  type        = list(string)
-  description = "(Optional) List of IAM custom or managed policies ARNs to attach to the User."
+  type        = set(string)
+  description = "(Optional) Set of IAM custom or managed policies ARNs to attach to the User."
   default     = []
 }
 
