@@ -6,8 +6,8 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ------------------------------------------------------------------------------
 
-output "user" {
-  description = "The IAM User objects."
+output "users" {
+  description = "A list of all created IAM User objects."
   value       = try(aws_iam_user.user, null)
 }
 
