@@ -4,14 +4,15 @@
 
 provider "aws" {
   version = "~> 2.0"
+  region  = "eu-west-1"
 }
 
 # ------------------------------------------------------------------------------
 # Example Usage
 # ------------------------------------------------------------------------------
 
-module "iam-user" {
-  source = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.0.2"
+module "iam-users" {
+  source = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.0.3"
 
   names = [
     "user.one",
