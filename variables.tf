@@ -45,7 +45,7 @@ variable "tags" {
 }
 
 variable "policy_statements" {
-  type        = list(any)
+  type        = any
   description = "(Optional) List of IAM policy statements to attach to the User as an inline policy."
   default     = []
 }
@@ -74,7 +74,7 @@ variable "module_enabled" {
 }
 
 variable "module_depends_on" {
-  type        = list(any)
+  type        = any
   description = "(Optional) A list of external resources the module depends_on. Default is []."
   default     = []
 }
