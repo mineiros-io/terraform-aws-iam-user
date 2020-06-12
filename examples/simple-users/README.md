@@ -1,16 +1,14 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/master/mineiros-primary-logo.svg" width="400"/>](https://www.mineiros.io/?ref=terraform-aws-iam-user)
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields&key=04f8b96b-178d-4ff2-b8c6-02228fc80789)](https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-iam-user/releases)
-[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
-[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
+[![license][badge-license]][apache20]
+[![Terraform Version][badge-terraform]][releases-terraform]
+[![Join Slack][badge-slack]][slack]
 
 # terraform-aws-iam-user Example
 
 ## Basic usage
 
-The code in [main.tf](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/simple-users/main.tf) defines an example for creating three users and attaching two IAM policies to each of them.
+The code in [main.tf] defines an example for creating three users and attaching two IAM policies to each of them.
 
 ```hcl
 module "iam-users" {
@@ -170,3 +168,17 @@ Run `terraform apply -auto-approve` to create the resources. Attention: this wil
 ### Destroying the example
 
 Run `terraform destroy -refresh=false -auto-approve` to destroy all previously created resources again.
+
+<!-- References -->
+
+[homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
+
+[badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
+[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
+
+[releases-terraform]: https://github.com/hashicorp/terraform/releases
+[apache20]: https://opensource.org/licenses/Apache-2.0
+[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+
+[main.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/simple-users/main.tf

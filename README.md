@@ -1,10 +1,9 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/master/mineiros-primary-logo.svg" width="400"/>]((https://mineiros.io/?ref=terraform-aws-iam-user))
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields&key=04f8b96b-178d-4ff2-b8c6-02228fc80789)](https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-iam-user/releases)
-[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
-[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
+[![GitHub tag (latest SemVer)][badge-semver]][releases-github]
+[![license][badge-license]][apache20]
+[![Terraform Version][badge-terraform]][releases-terraform]
+[![Join Slack][badge-slack]][slack]
 
 # terraform-aws-iam-user
 
@@ -32,8 +31,8 @@ A [Terraform](https://www.terraform.io) 0.12 base module for
 
 ## Module Features
 
-In contrast to the plain `aws_iam_user` resource this module has extended features allowing you
-to add custom & managed IAM and/ or inline policies and adding user to groups.
+In contrast to the plain `aws_iam_user` resource, this module has extended features allowing you
+to add custom & managed IAM and/or inline policies and adding user to groups.
 While all security features can be disabled as needed, best practices
 are pre-configured.
 
@@ -42,9 +41,9 @@ are pre-configured.
   Add IAM users
 
 - **Extended Module Features**:
-  Add custom & managed IAM policies
-  Add inline policies
-  Add users to groups
+  Attach custom & managed IAM policies,
+  attach an inline policy,
+  add users to a set of groups
 
 ## Getting Started
 
@@ -69,9 +68,9 @@ module "iam-users" {
 ## Module Argument Reference
 
 See
-[variables.tf](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/variables.tf)
+[variables.tf]
 and
-[examples/](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples)
+[examples]
 for details and use-cases.
 
 #### Module Configuration
@@ -91,7 +90,7 @@ for details and use-cases.
 
 - **`names`**: **(Required set(`string`), forces new resource)**
 
-  A set of names for the IAM users that will be created.
+  A set of names of IAM users that will be created.
 
 - **`groups`**: *(Optional set(`string`))*
 
@@ -150,9 +149,10 @@ for details and use-cases.
       not_resources = []
 
       conditions = [
-        { test     = "Bool"
+        {
+          test     = "Bool"
           variable = "aws:MultiFactorAuthPresent"
-          values   = [ "true" ]
+          values   = ["true"]
         }
       ]
     }
@@ -230,3 +230,20 @@ This module is licensed under the Apache License Version 2.0, January 2004.
 Please see [LICENSE](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/LICENSE) for full details.
 
 Copyright &copy; 2020 Mineiros
+
+<!-- References -->
+
+[homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
+
+[badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
+[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
+[badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver
+
+[releases-github]: https://github.com/mineiros-io/terraform-aws-iam-user/releases
+[releases-terraform]: https://github.com/hashicorp/terraform/releases
+[apache20]: https://opensource.org/licenses/Apache-2.0
+[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+
+[variables.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/variables.tf
+[examples]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples

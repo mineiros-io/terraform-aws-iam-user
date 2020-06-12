@@ -66,47 +66,6 @@ module "iam-users" {
       ]
     },
     {
-      sid    = "AllowManageOwnSigningCertificates"
-      effect = "Allow"
-      actions = [
-        "iam:DeleteSigningCertificate",
-        "iam:ListSigningCertificates",
-        "iam:UpdateSigningCertificate",
-        "iam:UploadSigningCertificate"
-      ]
-      resources = [
-        "arn:aws:iam::*:user/&{aws:username}"
-      ]
-    },
-    {
-      sid    = "AllowManageOwnSSHPublicKeys"
-      effect = "Allow"
-      actions = [
-        "iam:DeleteSSHPublicKey",
-        "iam:GetSSHPublicKey",
-        "iam:ListSSHPublicKeys",
-        "iam:UpdateSSHPublicKey",
-        "iam:UploadSSHPublicKey"
-      ]
-      resources = [
-        "arn:aws:iam::*:user/&{aws:username}"
-      ]
-    },
-    {
-      sid    = "AllowManageOwnGitCredentials"
-      effect = "Allow"
-      actions = [
-        "iam:CreateServiceSpecificCredential",
-        "iam:DeleteServiceSpecificCredential",
-        "iam:ListServiceSpecificCredentials",
-        "iam:ResetServiceSpecificCredential",
-        "iam:UpdateServiceSpecificCredential"
-      ]
-      resources = [
-        "arn:aws:iam::*:user/&{aws:username}"
-      ]
-    },
-    {
       sid    = "AllowManageOwnVirtualMFADevice"
       effect = "Allow"
       actions = [

@@ -1,16 +1,16 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/master/mineiros-primary-logo.svg" width="400"/>](https://www.mineiros.io/?ref=terraform-aws-iam-user)
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields&key=04f8b96b-178d-4ff2-b8c6-02228fc80789)](https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-iam-user/releases)
-[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
-[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
+[![license][badge-license]][apache20]
+[![Terraform Version][badge-terraform]][releases-terraform]
+[![Join Slack][badge-slack]][slack]
 
 # terraform-aws-iam-user Example
 
 ## Basic usage
 
-The code in [main.tf](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/iam-user-force-mfa/main.tf) defines an example for creating three users and attaching two IAM policies as well as a custom inline policy which enforces MFA activation to perform any action to each of them.
+The code in [main.tf] defines an example for creating three users and attaching two IAM policies as well as a custom inline policy.
+The custom inline policy is adapted based on this [AWS documentation example] for creating a policy which allows only MFA-authenticated IAM users to manage their own credentials.
+The `AllowManageOwnGitCredentials`, `AllowManageOwnSSHPublicKeys` and `AllowManageOwnSigningCertificates` statements have been left out for brevity.
 
 ```hcl
 module "iam-users" {
@@ -45,7 +45,7 @@ module "iam-users" {
             "iam:ChangePassword",
             "iam:GetUser"
         ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
+      resources = ["arn:aws:iam::*:user/&{aws:username}"]
     },
     {
       sid    = "AllowManageOwnAccessKeys",
@@ -56,42 +56,7 @@ module "iam-users" {
             "iam:ListAccessKeys",
             "iam:UpdateAccessKey"
         ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
-    },
-    {
-      sid    = "AllowManageOwnSigningCertificates",
-      effect = "Allow",
-      actions = [
-            "iam:DeleteSigningCertificate",
-            "iam:ListSigningCertificates",
-            "iam:UpdateSigningCertificate",
-            "iam:UploadSigningCertificate"
-        ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
-    },
-    {
-      sid    = "AllowManageOwnSSHPublicKeys",
-      effect = "Allow",
-      actions = [
-            "iam:DeleteSSHPublicKey",
-            "iam:GetSSHPublicKey",
-            "iam:ListSSHPublicKeys",
-            "iam:UpdateSSHPublicKey",
-            "iam:UploadSSHPublicKey"
-        ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
-    },
-    {
-      sid    = "AllowManageOwnGitCredentials",
-      effect = "Allow",
-      actions = [
-            "iam:CreateServiceSpecificCredential",
-            "iam:DeleteServiceSpecificCredential",
-            "iam:ListServiceSpecificCredentials",
-            "iam:ResetServiceSpecificCredential",
-            "iam:UpdateServiceSpecificCredential"
-        ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
+      resources = ["arn:aws:iam::*:user/&{aws:username}"]
     },
     {
       sid    = "AllowManageOwnVirtualMFADevice",
@@ -100,7 +65,7 @@ module "iam-users" {
             "iam:CreateVirtualMFADevice",
             "iam:DeleteVirtualMFADevice"
         ],
-      resources = ["arn:aws:iam::*:mfa/${aws:username}"]
+      resources = ["arn:aws:iam::*:mfa/&{aws:username}"]
     },
     {
       sid    = "AllowManageOwnUserMFA",
@@ -111,7 +76,7 @@ module "iam-users" {
             "iam:ListMFADevices",
             "iam:ResyncMFADevice"
         ],
-      resources = ["arn:aws:iam::*:user/${aws:username}"]
+      resources = ["arn:aws:iam::*:user/&{aws:username}"]
     },
     {
       sid    = "DenyAllExceptListedIfNoMFA"
@@ -144,7 +109,7 @@ module "iam-users" {
 
 ```bash
 git clone https://github.com/mineiros-io/terraform-aws-iam-user.git
-cd terraform-aws-iam-user/terraform/examples/iam-user-force-mfa
+cd terraform-aws-iam-user/terraform/examples/require-mfa-credentials
 ```
 
 ### Initializing Terraform
@@ -163,3 +128,18 @@ Run `terraform apply -auto-approve` to create the resources. Attention: this wil
 ### Destroying the example
 
 Run `terraform destroy -refresh=false -auto-approve` to destroy all previously created resources again.
+
+<!-- References -->
+
+[homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
+
+[badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
+[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
+
+[releases-terraform]: https://github.com/hashicorp/terraform/releases
+[apache20]: https://opensource.org/licenses/Apache-2.0
+[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+
+[main.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/require-mfa-credentials/main.tf
+[AWS documentation example]: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html
