@@ -1,6 +1,9 @@
-# ------------------------------------------------------------------------------
-# Example Setup
-# ------------------------------------------------------------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CREATE MULTIPLE IAM USERS AT ONCE
+# This example shows how to create multiple users at once by passing a list
+# of desired usernames to the module. We also attach some default IAM Policies
+# to the created users.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 provider "aws" {
   version = "~> 2.0"
@@ -8,7 +11,7 @@ provider "aws" {
 }
 
 # ------------------------------------------------------------------------------
-# Example Usage
+# CREATE THE IAM USERS AND ATTACH DEFAULT IAM POLICIES
 # ------------------------------------------------------------------------------
 
 module "iam-users" {
