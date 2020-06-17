@@ -1,5 +1,6 @@
 [<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
+[![Build Status][badge-build]][build-status]
 [![GitHub tag (latest SemVer)][badge-semver]][releases-github]
 [![license][badge-license]][apache20]
 [![Terraform Version][badge-terraform]][releases-terraform]
@@ -56,13 +57,14 @@ module "iam-users" {
   names = [
     "user.one",
     "user.two",
-    "user.three"
+    "user.three",
   ]
 
   policy_arns = [
     "arn:aws:iam::aws:policy/ReadOnlyAccess",
     "arn:aws:iam::aws:policy/job-function/Billing",
   ]
+}
 ```
 
 ## Module Argument Reference
@@ -177,73 +179,84 @@ The following attributes are exported by the module:
   - https://www.terraform.io/docs/providers/aws/r/iam_user_policy.html
   - https://www.terraform.io/docs/providers/aws/r/iam_user_policy_attachment.html
   - https://www.terraform.io/docs/providers/aws/r/iam_user_group_membership.html
-
+  
 ## Module Versioning
 
-This Module follows the principles of [Semantic Versioning (SemVer)](https://semver.org/).
+This Module follows the principles of [Semantic Versioning (SemVer)].
 
-Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following constructs:
+Given a version number `MAJOR.MINOR.PATCH`, we increment the:
 
-1. Use the `MAJOR` version for incompatible changes.
-1. Use the `MINOR` version when adding functionality in a backwards compatible manner.
-1. Use the `PATCH` version when introducing backwards compatible bug fixes.
+1. `MAJOR` version when we make incompatible changes,
+2. `MINOR` version when we add functionality in a backwards compatible manner, and
+3. `PATCH` version when we make backwards compatible bug fixes.
 
 ### Backwards compatibility in `0.0.z` and `0.y.z` version
 
-- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is
-  increased. (Initial development)
-- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is
-  increased. (Pre-release)
+- Backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
+- Backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
 
 ## About Mineiros
 
-Mineiros is a [DevOps as a Service](https://mineiros.io/?ref=terraform-aws-iam-user) company based in Berlin, Germany. We offer commercial support
-for all of our projects and encourage you to reach out if you have any questions or need help.
-Feel free to send us an email at [hello@mineiros.io](mailto:hello@mineiros.io) or join our [Community Slack channel](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg).
+Mineiros is a [DevOps as a Service][homepage] company based in Berlin, Germany.
+We offer commercial support for all of our projects and encourage you to reach out
+if you have any questions or need help. Feel free to send us an email at [hello@mineiros.io] or join our [Community Slack channel][slack].
 
 We can also help you with:
 
-- Terraform Modules for all types of infrastructure such as VPC's, Docker clusters,
-  databases, logging and monitoring, CI, etc.
-- Consulting & Training on AWS, Terraform and DevOps.
+- Terraform modules for all types of infrastructure such as VPCs, Docker clusters, databases, logging and monitoring, CI, etc.
+- Consulting & training on AWS, Terraform and DevOps
 
 ## Reporting Issues
 
-We use GitHub [Issues](https://github.com/mineiros-io/terraform-aws-iam-user/issues)
-to track community reported issues and missing features.
+We use GitHub [Issues] to track community reported issues and missing features.
 
 ## Contributing
 
 Contributions are always encouraged and welcome! For the process of accepting changes, we use
-[Pull Requests](https://github.com/mineiros-io/terraform-aws-iam-user/pulls). If you’d like more information, please
-see our [Contribution Guidelines](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/CONTRIBUTING.md).
+[Pull Requests]. If you'd like more information, please see our [Contribution Guidelines].
 
 ## Makefile Targets
 
-This repository comes with a handy
-[Makefile](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/Makefile).
+This repository comes with a handy [Makefile].
 Run `make help` to see details on each available target.
 
 ## License
 
 This module is licensed under the Apache License Version 2.0, January 2004.
-Please see [LICENSE](https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/LICENSE) for full details.
+Please see [LICENSE] for full details.
 
-Copyright &copy; 2020 Mineiros
+Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 <!-- References -->
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
+[hello@mineiros.io]: mailto:hello@mineiros.io
 
+[badge-build]: https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields&key=e7037b28-8872-4dff-8ce1-484d8a971e8a
+[badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
-[badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver
 
+<!-- markdown-link-check-disable -->
+[build-status]: https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user
 [releases-github]: https://github.com/mineiros-io/terraform-aws-iam-user/releases
+<!-- markdown-link-check-enable -->
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
 [slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
 
+[Terraform]: https://www.terraform.io
+[AWS]: https://aws.amazon.com/
+[Semantic Versioning (SemVer)]: https://semver.org/
+
+<!-- markdown-link-check-disable -->
+[examples/example/main.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/example/main.tf
 [variables.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/variables.tf
-[examples]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples
+[examples/]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples
+[Issues]: https://github.com/mineiros-io/terraform-aws-iam-user/issues
+[LICENSE]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/LICENSE
+[Makefile]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/Makefile
+[Pull Requests]: https://github.com/mineiros-io/terraform-aws-iam-user/pulls
+[Contribution Guidelines]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/CONTRIBUTING.md
+<!-- markdown-link-check-enable -->
