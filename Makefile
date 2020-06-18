@@ -1,7 +1,7 @@
 # Set default shell to bash
 SHELL := /bin/bash -o pipefail
 
-BUILD_TOOLS_VERSION      ?= v0.4.0
+BUILD_TOOLS_VERSION      ?= v0.5.4
 BUILD_TOOLS_DOCKER_REPO  ?= mineiros/build-tools
 BUILD_TOOLS_DOCKER_IMAGE ?= ${BUILD_TOOLS_DOCKER_REPO}:${BUILD_TOOLS_VERSION}
 
@@ -58,12 +58,16 @@ test/unit-tests: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_AWS_FLAGS}
 test/unit-tests:
 	@echo "${YELLOW}No tests defined.${RESET}"
-#	$(call go-test,tests)
+#	@echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
+#	$(call go-test,./test/...)
 
 ## Clean up cache and temporary files
 .PHONY: clean
 clean:
 	$(call rm-command,.terraform)
+	$(call rm-command,*.tfplan)
+	$(call rm-command,examples/*/.terraform)
+	$(call rm-command,examples/*/*.tfplan)
 
 ## Display help for all targets
 .PHONY: help
@@ -80,8 +84,6 @@ help:
 
 # define helper functions
 quiet-command = $(if ${V},${1},$(if ${2},@echo ${2} && ${1}, @${1}))
-
 docker-run    = $(call quiet-command,${DOCKER_RUN_CMD} ${1} | cat,"${YELLOW}[DOCKER RUN] ${GREEN}${1}${RESET}")
-go-test       = $(call quiet-command,${DOCKER_RUN_CMD} go test -v -timeout 45m -parallel 128 ${1} | cat,"${YELLOW}[TEST] ${GREEN}${1}${RESET}")
-
+go-test       = $(call quiet-command,${DOCKER_RUN_CMD} go test -v -count 1 -timeout 45m -parallel 128 ${1} | cat,"${YELLOW}[TEST] ${GREEN}${1}${RESET}")
 rm-command    = $(call quiet-command,rm -rf ${1},"${YELLOW}[CLEAN] ${GREEN}${1}${RESET}")

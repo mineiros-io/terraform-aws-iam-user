@@ -181,4 +181,6 @@ Run `terraform destroy -refresh=false -auto-approve` to destroy all previously c
 [apache20]: https://opensource.org/licenses/Apache-2.0
 [slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
 
+<!-- markdown-link-check-disable -->
 [main.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/simple-users/main.tf
+<!-- markdown-link-check-enable -->
