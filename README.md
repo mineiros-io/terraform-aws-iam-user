@@ -8,18 +8,18 @@
 
 # terraform-aws-iam-user
 
-A [Terraform](https://www.terraform.io) 0.12 base module for
-[Amazon Web Services (AWS)](https://aws.amazon.com/).
+A [Terraform](https://www.terraform.io) module for deploying and managing
+[IAM Users][IAM-User-Docs] on [Amazon Web Services][AWS].
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
 - [Module Argument Reference](#module-argument-reference)
-    - [Module Configuration](#module-configuration)
-    - [Top-level Arguments](#top-level-arguments)
-      - [Main Resource Configuration](#main-resource-configuration)
-      - [Extended Resource configuration](#extended-resource-configuration)
-        - [Custom & Managed Policies](#custom--managed-policies)
-        - [Inline Policy](#inline-policy)
+  - [Module Configuration](#module-configuration)
+  - [Top-level Arguments](#top-level-arguments)
+    - [Main Resource Configuration](#main-resource-configuration)
+    - [Extended Resource configuration](#extended-resource-configuration)
+      - [Custom & Managed Policies](#custom--managed-policies)
+      - [Inline Policy](#inline-policy)
 - [Module Attributes Reference](#module-attributes-reference)
 - [External Documentation](#external-documentation)
 - [Module Versioning](#module-versioning)
@@ -75,7 +75,7 @@ and
 [examples]
 for details and use-cases.
 
-#### Module Configuration
+### Module Configuration
 
 - **`module_enabled`**: *(Optional `bool`)*
 
@@ -86,9 +86,9 @@ for details and use-cases.
 
   A set of dependencies. Any object can be assigned to this list to define a hidden external dependency.
 
-#### Top-level Arguments
+### Top-level Arguments
 
-##### Main Resource Configuration
+#### Main Resource Configuration
 
 - **`names`**: **(Required set(`string`), forces new resource)**
 
@@ -121,16 +121,16 @@ for details and use-cases.
   Key-value map of tags for the IAM user.
   Default is `{}`.
 
-##### Extended Resource configuration
+#### Extended Resource configuration
 
-###### Custom & Managed Policies
+##### Custom & Managed Policies
 
 - **`policy_arns`**: *(Optional `list(string)`)*
 
   List of custom or managed IAM policy ARNs to attach to the user.
   Default is `[]`.
 
-###### Inline Policy
+##### Inline Policy
 
 - **`policy_statements`**: *(Optional `list(statement)`)*
 
@@ -169,8 +169,8 @@ The following attributes are exported by the module:
 - **`user_policy`**: The `aws_iam_user_policy` object(s).
 
 ## External Documentation
-- AWS Documentation IAM:
 
+- AWS Documentation IAM:
   - User: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html
   - Policies: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html
 
@@ -179,7 +179,7 @@ The following attributes are exported by the module:
   - https://www.terraform.io/docs/providers/aws/r/iam_user_policy.html
   - https://www.terraform.io/docs/providers/aws/r/iam_user_policy_attachment.html
   - https://www.terraform.io/docs/providers/aws/r/iam_user_group_membership.html
-  
+
 ## Module Versioning
 
 This Module follows the principles of [Semantic Versioning (SemVer)].
@@ -248,6 +248,7 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [Terraform]: https://www.terraform.io
 [AWS]: https://aws.amazon.com/
+[IAM-User-Docs]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html
 [Semantic Versioning (SemVer)]: https://semver.org/
 
 <!-- markdown-link-check-disable -->
