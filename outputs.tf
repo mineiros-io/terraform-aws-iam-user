@@ -16,6 +16,11 @@ output "user_policy" {
   value       = try(aws_iam_user_policy.policy, null)
 }
 
+output "user_policy_attachment" {
+  description = "The IAM User Policy Attachment objects."
+  value       = try(aws_iam_user_policy_attachment.policy, null)
+}
+
 # ------------------------------------------------------------------------------
 # OUTPUT ALL INPUT VARIABLES
 # ------------------------------------------------------------------------------
