@@ -1,6 +1,9 @@
-# ------------------------------------------------------------------------------
-# Example Setup
-# ------------------------------------------------------------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# DEPLOY USERS THAT REQUIRE MFA TO BE ACTIVATED
+# This example creates a set of three users with two attached default
+# IAM Policies. It will also create and attach custom IAM Policies
+# that allow the users to self-manage their credentials if MFA is active.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 provider "aws" {
   version = "~> 2.0"
@@ -8,7 +11,7 @@ provider "aws" {
 }
 
 # ------------------------------------------------------------------------------
-# Example Usage
+# Create the IAM Users with attached IAM Policies
 # ------------------------------------------------------------------------------
 
 module "iam-users" {

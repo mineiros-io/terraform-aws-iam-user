@@ -12,7 +12,7 @@ import (
 )
 
 // TestCreateBasicIamUsers
-// tests the creation of a list of IAM Users with some attached default IAM Policies
+// Tests the creation of a list of IAM Users with some attached default IAM Policies
 func TestCreateBasicIamUsers(t *testing.T) {
 	t.Parallel()
 
@@ -23,7 +23,7 @@ func TestCreateBasicIamUsers(t *testing.T) {
 		fmt.Sprintf("second.testuser-%s", random.UniqueId()),
 	}
 
-	exptectedIamPolicyARNs := []string{
+	expectedIamPolicyARNs := []string{
 		"arn:aws:iam::aws:policy/ReadOnlyAccess",
 		"arn:aws:iam::aws:policy/job-function/Billing",
 	}
@@ -34,7 +34,7 @@ func TestCreateBasicIamUsers(t *testing.T) {
 		Vars: map[string]interface{}{
 			"aws_region":  randomAwsRegion,
 			"names":       expectedUserNames,
-			"policy_arns": exptectedIamPolicyARNs,
+			"policy_arns": expectedIamPolicyARNs,
 		},
 		Upgrade: true,
 	}
@@ -49,16 +49,16 @@ func TestCreateBasicIamUsers(t *testing.T) {
 	createdUsers, _ := outputs["all"].(map[string]interface{})["users"].(map[string]interface{})
 
 	// Validate that the qty of creates users matches the desired qty
-	assert.Equal(t, len(expectedUserNames), len(createdUsers), "Expected %d users to be created. Got %d instead.", len(expectedUserNames), len(createdUsers))
+	assert.Equal(t, len(expectedUserNames), len(createdUsers), "Expected %d IAM Users. Got %d instead.", len(expectedUserNames), len(createdUsers))
 
 	// Validate that the users with the expected usernames exist
 	for _, name := range expectedUserNames {
-		assert.Contains(t, createdUsers, name, "Expected username %s not found.", name)
+		assert.Contains(t, createdUsers, name, "No IAM User found with the username '%s'.", name)
 	}
 
 	// Validate that quantity of user_policy_attachment's located in the outputs
 	userPolicyAttachments := outputs["all"].(map[string]interface{})["user_policy_attachment"].([]interface{})
 
-	// If we attach two policies to two users, we should be able to locate four attachments in the outputs
-	assert.Equal(t, (len(exptectedIamPolicyARNs) * len(expectedUserNames)), len(userPolicyAttachments), "Exptected %s user policy attachment. Found %d instead", len(expectedUserNames), len(userPolicyAttachments))
+	// If we attach two IAM Policies to two IAM Users, we should be able to locate four IAM Policy Attachments in the outputs
+	assert.Equal(t, len(expectedIamPolicyARNs)*len(expectedUserNames), len(userPolicyAttachments), "Expected %d IAM User Policy Attachments. Got %d instead.", len(expectedUserNames), len(userPolicyAttachments))
 }
