@@ -15,7 +15,8 @@ provider "aws" {
 # ------------------------------------------------------------------------------
 
 module "iam-users" {
-  source = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.0.3"
+  source  = "mineiros-io/iam-user/aws"
+  version = "~> 0.1.0"
 
   names = [
     "user.one",
