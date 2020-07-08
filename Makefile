@@ -46,13 +46,18 @@ DOCKER_RUN_CMD  = docker run ${DOCKER_FLAGS} ${BUILD_TOOLS_DOCKER_IMAGE}
 .PHONY: default
 default: help
 
-## Run pre-commit hooks in build-tools docker container.
+# not exported in make help on purpose, as this is a one-time shot to make life easier
+.PHONY: template/adjust
+template/adjust:
+	@find . -path "*/.git" -prune -o -type f -exec sed -i -e "s,terraform-aws-iam-user,$${PWD##*/},g" {} \;
+
+## Run pre-commit hooks inside a build-tools docker container.
 .PHONY: test/pre-commit
 test/pre-commit: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/pre-commit:
 	$(call docker-run,pre-commit run -a)
 
-## Run go tests hooks in build-tools docker container.
+## Run all Go tests inside a build-tools docker container. This is complementary to running 'go test ./test/...'.
 .PHONY: test/unit-tests
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_AWS_FLAGS}
@@ -65,8 +70,8 @@ test/unit-tests:
 clean:
 	$(call rm-command,.terraform)
 	$(call rm-command,*.tfplan)
-	$(call rm-command,examples/*/.terraform)
-	$(call rm-command,examples/*/*.tfplan)
+	$(call rm-command,*/*/.terraform)
+	$(call rm-command,*/*/*.tfplan)
 
 ## Display help for all targets
 .PHONY: help
