@@ -12,7 +12,8 @@ The code in [main.tf] defines an example for creating three users and attaching 
 
 ```hcl
 module "iam-users" {
-  source = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.0.3"
+  source  = "mineiros-io/iam-user/aws"
+  version = "~> 0.1.0"
 
   names = [
     "user.one",
@@ -181,6 +182,4 @@ Run `terraform destroy -refresh=false -auto-approve` to destroy all previously c
 [apache20]: https://opensource.org/licenses/Apache-2.0
 [slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
 
-<!-- markdown-link-check-disable -->
 [main.tf]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/simple-users/main.tf
-<!-- markdown-link-check-enable -->
