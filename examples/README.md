@@ -11,7 +11,8 @@
 
 <!-- References -->
 <!-- markdown-link-check-disable -->
-[example/]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/example
+[require-mfa-credentials/]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/require-mfa-credentials
+[simple-users/]: https://github.com/mineiros-io/terraform-aws-iam-user/blob/master/examples/simple-users
 <!-- markdown-link-check-enable -->
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
