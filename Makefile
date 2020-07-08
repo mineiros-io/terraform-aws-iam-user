@@ -46,10 +46,11 @@ DOCKER_RUN_CMD  = docker run ${DOCKER_FLAGS} ${BUILD_TOOLS_DOCKER_IMAGE}
 .PHONY: default
 default: help
 
-# not exported in make help on purpose, as this is a one-time shot to make life easier
+# Not exposed as a callable target by `make help`, since this is a one-time shot to simplify the development of this module.
 .PHONY: template/adjust
+template/adjust: FILTER = -path ./.git -prune -a -type f -o -type f -not -name Makefile
 template/adjust:
-	@find . -path "*/.git" -prune -o -type f -exec sed -i -e "s,terraform-aws-iam-user,$${PWD##*/},g" {} \;
+	@find . $(FILTER) -exec sed -i -e "s,terraform-module-template,$${PWD##*/},g" {} \;
 
 ## Run pre-commit hooks inside a build-tools docker container.
 .PHONY: test/pre-commit
