@@ -233,13 +233,13 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [homepage]: https://mineiros.io/?ref=terraform-aws-iam-user
 [hello@mineiros.io]: mailto:hello@mineiros.io
 
-[badge-build]: https://mineiros.semaphoreci.com/badges/terraform-aws-iam-user/branches/master.svg?style=shields&key=e7037b28-8872-4dff-8ce1-484d8a971e8a
+[badge-build]: https://github.com/mineiros-io/terraform-aws-iam-user/workflows/CI/CD%20Pipeline/badge.svg
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-iam-user.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
-[build-status]: https://mineiros.semaphoreci.com/projects/terraform-aws-iam-user
+[build-status]: https://github.com/mineiros-io/terraform-aws-iam-user/actions
 [releases-github]: https://github.com/mineiros-io/terraform-aws-iam-user/releases
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
