@@ -13,7 +13,7 @@ The code in [main.tf] defines an example for creating three users and attaching 
 ```hcl
 module "iam-users" {
   source  = "mineiros-io/iam-user/aws"
-  version = "~> 0.1.0"
+  version = "~> 0.2.0"
 
   names = [
     "user.one",

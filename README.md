@@ -56,7 +56,7 @@ Most basic usage showing how to add three users and assigning two policies:
 ```hcl
 module "iam-users" {
   source  = "mineiros-io/iam-user/aws"
-  version = "~> 0.1.0"
+  version = "~> 0.2.0"
 
   names = [
     "user.one",
