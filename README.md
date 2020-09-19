@@ -8,8 +8,11 @@
 
 # terraform-aws-iam-user
 
-A [Terraform](https://www.terraform.io) module for deploying and managing
+A [Terraform](https://www.terraform.io) base module for deploying and managing
 [IAM Users][IAM-User-Docs] on [Amazon Web Services][AWS].
+
+***This module supports Terraform v0.13 as well as v0.12.20 and above
+and is compatible with the terraform AWS provider v3 as well as v2.0 and above.***
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
