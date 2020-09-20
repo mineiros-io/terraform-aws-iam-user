@@ -6,8 +6,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 provider "aws" {
-  version = "~> 2.0"
-  region  = "eu-west-1"
+  region = "eu-west-1"
 }
 
 # ------------------------------------------------------------------------------
@@ -16,7 +15,7 @@ provider "aws" {
 
 module "iam-users" {
   source  = "mineiros-io/iam-user/aws"
-  version = "~> 0.1.0"
+  version = "~> 0.2.0"
 
   names = [
     "user.one",
