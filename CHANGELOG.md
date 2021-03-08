@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0]
+### Added
+- Add support for Terraform v0.14.x
+
 ## [0.2.0]
 ### Added
 - Add support for Terraform v0.13.x
@@ -42,9 +46,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support to attach the user to a list of groups by group name
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.1.0...v0.2.0
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.2.0...v0.3.0
 <!-- markdown-link-check-disabled -->
+[0.2.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.0.4...v0.1.0
 [0.0.4]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.0.2...v0.0.3
