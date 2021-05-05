@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1]
+### Added
+- feat: feat: add support for Terraform `v0.14.x`
+
+### Changed
+- feat: upgrade terratest to `v1.34.0`
+- build: update secrets in GitHub Actions pipeline
+- build: upgrade build-tools to `v0.9.0`
+- build: upgrade pre-commit-hooks to `v0.2.2`
+
 ## [0.3.0]
 ### Added
 - Add support for Terraform v0.14.x
@@ -46,9 +56,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support to attach the user to a list of groups by group name
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.2.0...v0.3.0
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.3.0...v0.3.1
 <!-- markdown-link-check-disabled -->
+[0.3.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.0.4...v0.1.0
 [0.0.4]: https://github.com/mineiros-io/terraform-aws-iam-user/compare/v0.0.3...v0.0.4
