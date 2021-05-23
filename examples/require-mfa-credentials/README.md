@@ -15,7 +15,7 @@ The `AllowManageOwnGitCredentials`, `AllowManageOwnSSHPublicKeys` and `AllowMana
 ```hcl
 module "iam-users" {
   source  = "mineiros-io/iam-user/aws"
-  version = "~> 0.3.0"
+  version = "~> 0.4.0"
 
   names = [
     "user.one",
