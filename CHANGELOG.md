@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add support for Terraform `1.x`
+
 ## [0.4.0]
 
 ### Added
@@ -15,10 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- feat: upgrade terratest to `v1.34.0`
-- build: update secrets in GitHub Actions pipeline
-- build: upgrade build-tools to `v0.11.0`
-- build: upgrade pre-commit-hooks to `v0.2.3`
+- Upgrade terratest to `v1.34.0`
+- Update secrets in GitHub Actions pipeline
+- Upgrade build-tools to `v0.11.0`
+- Upgrade pre-commit-hooks to `v0.2.3`
 
 ## [0.3.0]
 
