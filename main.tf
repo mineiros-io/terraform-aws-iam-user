@@ -77,15 +77,22 @@ resource "aws_iam_user_policy" "policy" {
 }
 
 locals {
-  policy_arns = tolist(setproduct(var.names, var.policy_arns))
+  policy_attachments = flatten([
+    for user in var.names : [
+      for policy in var.policy_arns : {
+        user       = user
+        policy_arn = policy
+      }
+    ]
+  ])
 }
 
 # Attach custom or managed policies
 resource "aws_iam_user_policy_attachment" "policy" {
-  count = var.module_enabled ? length(local.policy_arns) : 0
+  count = var.module_enabled ? length(local.policy_attachments) : 0
 
-  user       = local.policy_arns[count.index][0]
-  policy_arn = local.policy_arns[count.index][1]
+  user       = local.policy_attachments[count.index].user
+  policy_arn = local.policy_attachments[count.index].policy_arn
 
   depends_on = [
     var.module_depends_on,
