@@ -99,6 +99,11 @@ clean:
 	$(call rm-command,*/*/*.tfplan)
 	$(call rm-command,*/*/.terraform.lock.hcl)
 
+## Generate README.md with Terradoc
+.PHONY: terradoc
+terradoc:
+	$(call quiet-command,terradoc -o README.md README.tfdoc.hcl)
+
 ## Display help for all targets
 .PHONY: help
 help:
