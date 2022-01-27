@@ -191,8 +191,7 @@ section {
           title = "Inline Policy"
 
           variable "policy_statements" {
-            type           = any
-            readme_type    = "list(statement)"
+            type           = list(statement)
             default        = []
             description    = <<-END
               List of IAM policy statements to attach to the user as an inline policy.
@@ -230,19 +229,86 @@ section {
     title   = "Module Outputs"
     content = <<-END
       The following attributes are exported by the module:
-
-      - **`users`**: The `aws_iam_user` object(s).
-      - **`user_policy`**: The `aws_iam_user_policy` object(s).
-      - **`user_policy_attachment`**: The `aws_iam_user_policy_attachment` object(s).
-      - **`names`**: The user names.
-      - **`path`**: Path in which to create the user.
-      - **`permissions_boundary`**: The ARN of the policy that is used to set the permissions boundary for the user.
-      - **`force_destroy`**: When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices.
-      - **`tags`**: Key-value map of tags for the IAM user.
-      - **`policy_statements`**: List of IAM policy statements to attach to the User as an inline policy.
-      - **`policy_arns`**: Set of IAM custom or managed policies ARNs attached to the User.
-      - **`groups`**: List of IAM groups the users were added to.
     END
+
+    output "users" {
+      type        = list(user)
+      description = <<-END
+        The `aws_iam_user` object(s).
+      END
+    }
+
+    output "user_policy" {
+      type        = object(user_policy)
+      description = <<-END
+        The `aws_iam_user_policy` object(s).
+      END
+    }
+
+    output "user_policy_attachment" {
+      type        = object(user_policy_attachment)
+      description = <<-END
+        The `aws_iam_user_policy_attachment` object(s).
+      END
+    }
+
+    output "names" {
+      type        = set(string)
+      description = <<-END
+        The user names.
+      END
+    }
+
+    output "path" {
+      type        = string
+      description = <<-END
+        Path in which to create the user.
+      END
+    }
+
+    output "permissions_boundary" {
+      type        = string
+      description = <<-END
+        The ARN of the policy that is used to set the permissions boundary for
+        the user.
+      END
+    }
+
+    output "force_destroy" {
+      type        = bool
+      description = <<-END
+        When destroying this user, destroy even if it has non-Terraform-managed
+        IAM access keys, login profile or MFA devices.
+      END
+    }
+
+    output "tags" {
+      type        = map(string)
+      description = <<-END
+        Key-value map of tags for the IAM user.
+      END
+    }
+
+    output "policy_statements" {
+      type        = list(policy_statement)
+      description = <<-END
+        List of IAM policy statements to attach to the User as an inline policy.
+      END
+    }
+
+    output "policy_arns" {
+      type        = set(string)
+      description = <<-END
+        Set of IAM custom or managed policies ARNs attached to the User.
+      END
+    }
+
+    output "groups" {
+      type        = list(string)
+      description = <<-END
+        List of IAM groups the users were added to.
+      END
+    }
   }
 
   section {
