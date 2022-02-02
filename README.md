@@ -123,7 +123,7 @@ for details and use-cases.
 - [**`permissions_boundary`**](#var-permissions_boundary): *(Optional `string`)*<a name="var-permissions_boundary"></a>
 
   The ARN of the policy that is used to set the permissions boundary for the user.
-Default is not to set any boundary.
+  Default is not to set any boundary.
 
 - [**`tags`**](#var-tags): *(Optional `map(string)`)*<a name="var-tags"></a>
 
@@ -155,15 +155,15 @@ Default is not to set any boundary.
   policy_statements = [
     {
       sid = "FullS3Access"
-  
+
       effect = "Allow"
-  
+
       actions     = ["s3:*"]
       not_actions = []
-  
+
       resources     = ["*"]
       not_resources = []
-  
+
       conditions = [
         {
           test     = "Bool"
@@ -179,17 +179,51 @@ Default is not to set any boundary.
 
 The following attributes are exported by the module:
 
-- **`users`**: The `aws_iam_user` object(s).
-- **`user_policy`**: The `aws_iam_user_policy` object(s).
-- **`user_policy_attachment`**: The `aws_iam_user_policy_attachment` object(s).
-- **`names`**: The user names.
-- **`path`**: Path in which to create the user.
-- **`permissions_boundary`**: The ARN of the policy that is used to set the permissions boundary for the user.
-- **`force_destroy`**: When destroying this user, destroy even if it has non-Terraform-managed IAM access keys, login profile or MFA devices.
-- **`tags`**: Key-value map of tags for the IAM user.
-- **`policy_statements`**: List of IAM policy statements to attach to the User as an inline policy.
-- **`policy_arns`**: Set of IAM custom or managed policies ARNs attached to the User.
-- **`groups`**: List of IAM groups the users were added to.
+- [**`users`**](#output-users): *(`list(user)`)*<a name="output-users"></a>
+
+  The `aws_iam_user` object(s).
+
+- [**`user_policy`**](#output-user_policy): *(`object(user_policy)`)*<a name="output-user_policy"></a>
+
+  The `aws_iam_user_policy` object(s).
+
+- [**`user_policy_attachment`**](#output-user_policy_attachment): *(`object(user_policy_attachment)`)*<a name="output-user_policy_attachment"></a>
+
+  The `aws_iam_user_policy_attachment` object(s).
+
+- [**`names`**](#output-names): *(`set(string)`)*<a name="output-names"></a>
+
+  The user names.
+
+- [**`path`**](#output-path): *(`string`)*<a name="output-path"></a>
+
+  Path in which to create the user.
+
+- [**`permissions_boundary`**](#output-permissions_boundary): *(`string`)*<a name="output-permissions_boundary"></a>
+
+  The ARN of the policy that is used to set the permissions boundary for
+  the user.
+
+- [**`force_destroy`**](#output-force_destroy): *(`bool`)*<a name="output-force_destroy"></a>
+
+  When destroying this user, destroy even if it has non-Terraform-managed
+  IAM access keys, login profile or MFA devices.
+
+- [**`tags`**](#output-tags): *(`map(string)`)*<a name="output-tags"></a>
+
+  Key-value map of tags for the IAM user.
+
+- [**`policy_statements`**](#output-policy_statements): *(`list(policy_statement)`)*<a name="output-policy_statements"></a>
+
+  List of IAM policy statements to attach to the User as an inline policy.
+
+- [**`policy_arns`**](#output-policy_arns): *(`set(string)`)*<a name="output-policy_arns"></a>
+
+  Set of IAM custom or managed policies ARNs attached to the User.
+
+- [**`groups`**](#output-groups): *(`list(string)`)*<a name="output-groups"></a>
+
+  List of IAM groups the users were added to.
 
 ## External Documentation
 
