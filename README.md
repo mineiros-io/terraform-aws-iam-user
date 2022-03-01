@@ -58,8 +58,7 @@ Most basic usage showing how to add three users and assigning two policies:
 
 ```hcl
 module "iam-users" {
-  source  = "mineiros-io/iam-user/aws"
-  version = "~> 0.5.0"
+  source  = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.5.1"
 
   names = [
     "user.one",
@@ -90,7 +89,7 @@ for details and use-cases.
 
   Default is `true`.
 
-- [**`module_depends_on`**](#var-module_depends_on): *(Optional `set(any)`)*<a name="var-module_depends_on"></a>
+- [**`module_depends_on`**](#var-module_depends_on): *(Optional `set(object)`)*<a name="var-module_depends_on"></a>
 
   A set of dependencies. Any object can be assigned to this list to define a hidden external dependency.
 

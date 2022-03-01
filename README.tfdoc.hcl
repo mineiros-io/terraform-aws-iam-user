@@ -70,8 +70,7 @@ section {
 
       ```hcl
       module "iam-users" {
-        source  = "mineiros-io/iam-user/aws"
-        version = "~> 0.5.0"
+        source  = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.5.1"
 
         names = [
           "user.one",
