@@ -58,7 +58,8 @@ Most basic usage showing how to add three users and assigning two policies:
 
 ```hcl
 module "iam-users" {
-  source  = "git@github.com:mineiros-io/terraform-aws-iam-user.git?ref=v0.5.1"
+  source  = "mineiros-io/iam-user/aws"
+  version = "~> 0.5.1"
 
   names = [
     "user.one",
