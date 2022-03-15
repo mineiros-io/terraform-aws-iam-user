@@ -110,7 +110,7 @@ section {
       }
 
       variable "module_depends_on" {
-        type        = set(any)
+        type        = list(dependency)
         description = <<-END
           A set of dependencies. Any object can be assigned to this list to define a hidden external dependency.
         END
